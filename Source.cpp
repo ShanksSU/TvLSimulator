@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <stdlib.h>
 #include <conio.h>
 #include <string>
@@ -90,9 +90,9 @@ string toString(const T& t) {
 	return oss.str();
 }
 
-class Human {
+class Person {
 public:
-	Human() {
+	Person() {
 		id = "";
 		talent = Gaussian_noise(M_T, SD_T);
 		capital = C_0;
@@ -100,20 +100,20 @@ public:
 		unlucky_cnt = P_E;
 	}
 
-	static void possion(Human& man);
-	static vector<string> data_arr(Human man);
-	static string put_data(Human man);
+	static void possion(Person& ind);
+	static vector<string> data_arr(Person ind);
+	static string put_data(Person ind);
 
 	string id = "";
 	double talent = 0.;
 	double capital = 0.;
 	double lucky_cnt = 0.;
 	double unlucky_cnt = 0.;
-	vector<string> Human_arr = { {toString(capital)}, toString(talent), toString(lucky_cnt), toString(unlucky_cnt) };
+	vector<string> Person_arr = { {toString(capital)}, toString(talent), toString(lucky_cnt), toString(unlucky_cnt) };
 	vector<string> title = { "id", "wealth", "talent", "lucky_cnt", "unlucky_cnt" };
 }H;
 
-void Human::possion(Human& man) {
+void Person::possion(Person& ind) {
 	random_device rd;
 	mt19937 gen(rd());
 	poisson_distribution<> d(0.5);	//泊松分布
@@ -124,50 +124,50 @@ void Human::possion(Human& man) {
 		uniform_real_distribution<double> dis_double(0, 1);	//連續型均勻分布 生成隨機浮點數
 		bool lucky = dis_int(gen);
 		if (lucky) {
-			if (dis_double(gen) < man.talent) {		//std::rand() / (RAND_MAX + 1.0), dis_double(gen)
-				man.capital *= 2;
+			if (dis_double(gen) < ind.talent) {		//std::rand() / (RAND_MAX + 1.0), dis_double(gen)
+				ind.capital *= 2;
 			}
-			man.lucky_cnt++;
+			ind.lucky_cnt++;
 		}
 		else {	
-			man.capital /= 2;
-			man.unlucky_cnt++;
+			ind.capital /= 2;
+			ind.unlucky_cnt++;
 		}
 	}
 }
 
-vector<string> Human::data_arr(Human man) {
-	return {	toString(man.id),
-				toString(man.capital),
-				toString(man.talent),
-				toString(man.lucky_cnt),
-				toString(man.unlucky_cnt)
+vector<string> Person::data_arr(Person ind) {
+	return {	toString(ind.id),
+				toString(ind.capital),
+				toString(ind.talent),
+				toString(ind.lucky_cnt),
+				toString(ind.unlucky_cnt)
 	};
 }
 
-string Human::put_data(Human man) {
-	return toString(man.capital) + "\t" + toString(man.talent) + "\t" + toString(man.lucky_cnt) + "\t" + toString(man.unlucky_cnt);
+string Person::put_data(Person ind) {
+	return toString(ind.capital) + "\t" + toString(ind.talent) + "\t" + toString(ind.lucky_cnt) + "\t" + toString(ind.unlucky_cnt);
 }
 
 void run_simulation() {
-	Human HP[N];
+	Person HP[N];
 	vector<vector<string>> population;
 	for (int i = 0; i < N; i++) {
-		//cout << Human::put_data(HP[i]) << endl;
+		//cout << Person::put_data(HP[i]) << endl;
 		//population.push_back({ toString(HP[i].talent) });
 		HP[i].id = "A" + toString(i);
 	}
 
 	for (int j = 0; j < T_; j++) {
-		for (auto& man : HP) {
-			Human::possion(man);
+		for (auto& ind : HP) {
+			Person::possion(ind);
 		}
-		//cout << Human::put_data(HP[j]) << endl;
+		//cout << Person::put_data(HP[j]) << endl;
 	}
 
-	for (auto man : HP) {
-		/*cout << Human::put_data(man) << endl;*/
-		population.push_back(Human::data_arr(man));
+	for (auto ind : HP) {
+		/*cout << Person::put_data(ind) << endl;*/
+		population.push_back(Person::data_arr(ind));
 	}
 	csv_writefile_2d(population, H.title);
 }
