@@ -1,5 +1,6 @@
 # TvLSimulator
-
+[![C++](https://img.shields.io/badge/support-C%2B%2B11%20or%20later-blue?style=flat&logo=cplusplus)](https://github.com/topics/cpp) 
+[![CMake](https://img.shields.io/badge/support-v2.8.12%20or%20later-blue?style=flat&logo=cmake)](https://cmake.org/) 
 ## 介紹
 
 在2022年，Alessandro Pluchino、Alessio Emanuele Biondo和Andrea Rapisarda因其在經濟學領域的研究而獲得了Ig Nobel獎，這是一個幽默諾貝爾獎。
@@ -18,6 +19,16 @@
 + + 幸運事件根據天賦決定是否使資產翻倍
 + + 不幸事件無視天賦資產减半
 
+## 項目結構
+```
+.
+├── CMakeLists.txt
+├── lib
+│   ├── constants.h
+│   ├── simulation.cpp
+│   └── simulation.h
+└── main.cpp
+```
 
 ## 目標
 
