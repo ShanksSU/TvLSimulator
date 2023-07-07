@@ -1,25 +1,25 @@
 # TvLSimulator
 [![C++](https://img.shields.io/badge/support-C%2B%2B11%20or%20later-blue?style=flat&logo=cplusplus)](https://github.com/topics/cpp) 
 [![CMake](https://img.shields.io/badge/support-v2.8.12%20or%20later-blue?style=flat&logo=cmake)](https://cmake.org/) 
-## 介紹
+## Introduction
 
-在2022年，Alessandro Pluchino、Alessio Emanuele Biondo和Andrea Rapisarda因其在經濟學領域的研究而獲得了Ig Nobel獎，這是一個幽默諾貝爾獎。
+In 2022, Alessandro Pluchino, Alessio Emanuele Biondo, and Andrea Rapisarda were awarded the Ig Nobel Prize for their research in the field of economics, which is a humorous parody of the Nobel Prize.
 
-他們的論文在數學上解釋了為什麼成功通常更傾向於幸運而非最有天賦(個人能力)的個體而受到肯定(Improbable Research，2022)。
+Their paper mathematically explained why success tends to be attributed more to luck than individual talent (Improbable Research, 2022).
 
-通過在“天賦 vs. 運氣”辯論的背景下進行模擬，該論文聲稱運氣比天賦更具重要性。這個輕鬆詼諧的肯定揭示了影響成功的非傳統因素，並引發了人們對運氣和個人能力相互作用的思考。
+By conducting simulations within the context of the "Talent vs. Luck" debate, the paper argues that luck plays a more significant role than talent. This lighthearted affirmation reveals unconventional factors that influence success and prompts contemplation on the interaction between luck and individual abilities.
 
-模擬的條件如下：
-+ 構建agent-based model
-+ 模擬一個世界，其中1000人遇到500個事件
-+ 天賦為正態分佈，範圍在0和1之間
-+ 資產起始值均為10
-+ 進行80次迭代，年齡範圍在20到60之間
-+ 代理人遇到的事件有50%的機率是幸運或是不幸
-+ + 幸運事件根據天賦決定是否使資產翻倍
-+ + 不幸事件無視天賦資產减半
+The conditions of the simulation are as follows:
++ Building an agent-based model
++ Simulating a world where 1000 individuals encounter 500 events
++ Talent follows a normal distribution ranging from 0 to 1
++ Initial asset values are set at 10
++ Conducting 80 iterations with an age range between 20 and 60
++ Events encountered by agents have a 50% chance of being lucky or unlucky
++ + Lucky events double assets based on talent
++ + Unlucky events halve assets regardless of talent
 
-## 項目結構
+## Project Structure
 ```
 .
 ├── CMakeLists.txt
@@ -30,17 +30,17 @@
 └── main.cpp
 ```
 
-## 目標
+## Objective
 
-構建agent-based model使用C++實現模型R語言做視覺化呈現與分析。
+Build an agent-based model using C++ to implement the model and visualize it in R for analysis.
 
-## 參考資料
+## References
 
-<b>執行環境：</b><br>
+<b>Environment:</b><br>
 gcc version 11.3.0<br>
 g++ version 11.3.0<br>
 R version 4.2.3<br>
 <br>
-<b>參考：</b><br>
-Pluchino, A., Biondo, A. E., & Rapisarda, A.(2018). Talent vs. Luck: The Role of Randomness in Success and Failure. <i>Advances in Complex Systems</i>. 
+<b>Reference:</b><br>
+Pluchino, A., Biondo, A. E., & Rapisarda, A. (2018). Talent vs. Luck: The Role of Randomness in Success and Failure. <i>Advances in Complex Systems</i>.
 https://arxiv.org/abs/1802.07068
